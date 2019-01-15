@@ -6,6 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 
   <title>Muro - PodemosAprender</title>
 
@@ -22,6 +25,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  
 
     <title>Muro - PodemosAprender</title>
 </head>
@@ -29,19 +33,19 @@
     <h2 style="text-align: center; margin-top: 30px">Muro</h2>
     <div style="margin: auto; width: 90%">
           <div class="col-md-6">
-                <form>
+                <form id="formShare">
                     <div class="form-row">
                       
                         <div class="form-group col-md-6">
                             <input type="text" class="form-control" id="name" placeholder="Nombre...">
                         </div>
                         <div class="form-group col-md-12">
-                              <textarea placeholder="Escribe algo..." class="form-control" rows="5" id="post"></textarea>
+                              <input placeholder="Escribe algo..." class="form-control" rows="5" id="post">
 
                         </div>
                       
                         <div class="form-group col-md-12" style="display: flex; flex-direction: column-reverse"> 
-                            <button type="button" class="btn btn-primary" id="addStudentButton" >Publicar</button>
+                            <button type="button" class="btn btn-primary" id="addStudentButton" disabled>Publicar</button>
                         </div>
                     </div>
                 </form>
@@ -56,12 +60,16 @@
              <div class="row">
             <div class="col-md-12">
                 <h3 class="text-left">Publicaciones</h3>
+                
                 <ul id="mainList" class="list-group"></ul>
             </div>
          
         </div>
     </div>
+      
     <script src="./js/index.js"></script>
+    
+    
 </body>
 
 </html>

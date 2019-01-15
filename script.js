@@ -1,5 +1,36 @@
-console.log('Init app')
 
+
+$(document).ready(function(){
+$("#formShare input").keyup(function() {
+        var form = $(this).parents("#formShare");
+        var check = checkCampos(form);
+        if(check) {
+            $("#addStudentButton").prop("disabled", false);
+        }
+        else {
+            $("#addStudentButton").prop("disabled", true);
+        }
+    });
+
+
+//Función para comprobar los campos de texto
+function checkCampos(obj) {
+    var camposRellenados = true;
+    obj.find("input").each(function() {
+    var $this = $(this);
+            if( $this.val().length <= 0 ) {
+                camposRellenados = false;
+                return false;
+            }
+    });
+    if(camposRellenados == false) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+})
 // Globales
 
 var LOCAL_KEY = 'postList'
@@ -11,6 +42,8 @@ var postList = getLocalList(LOCAL_KEY)
 console.log('Fuente de verdad inicial ', postList)
 
 var mainListNode = document.getElementById('mainList')
+
+var colors =["bg-primary","bg-success","bg-danger"]
 
 var post
 
@@ -43,14 +76,18 @@ function addPost () {
   
   var nameValue = nameNode.value
   var postValue = contentNode.value
-  var idValue = idPost
+  
   
 
   var post = {
     name: nameValue,
     postContent: postValue,
-    id:idPost  
+    id:1
     }
+  
+  
+  
+
 
   postList.push(post)
 
@@ -76,7 +113,7 @@ function createPostNode (newPost) {
   // Creo el nodo li
   var liNode = document.createElement('li')
 
-
+var color= randomColor()
 
   // Le setteo el id al nodo
   liNode.id = idPost
@@ -87,20 +124,21 @@ function createPostNode (newPost) {
   // Le agrego el contenido al nodo
   liNode.innerHTML =
       
-    ' <div class="flex-row-reverse" style="display: flex; flex-direction: column-reverse">  <button type="button" class="btn btn-danger"  id="DeletePostButton" >Borrar</button>  </div>'+
-    '<h4>' +
+    ' <div class="d-inline"> <button type="button" class="d-inline btn btn-default btn-circle btn-lg '+colors[color]+'"><i class="glyphicon glyphicon-ok "></i></button></div>'+
+    '<h3 class="d-inline"> ' +
     newPost.name +
-    '</h4>' +
-    '<h3>' +
+    '</h3><div  class="flex-row-reverse" style="display: inline; float:right"> <button type="button" class="btn bg-danger text-white"  id="DeletePostButton" >Borrar</button>  </div>' +
+    '<h3> ' +
     newPost.postContent +
-    '</h3>'
+    '</h3></div>'
+    
 
   // Devuelvo solo el nodo con todos sus datos
   return liNode
 }
 function deletePost(event){
-    var inputNode = event.target
-    console.log(inputNode.parentElement.parentElement.id)
+    var inputNode = event.target 
+    console.log(inputNode.parentElement.parentElement)
 }
 
 function setLocalList (key, list) {
@@ -127,9 +165,16 @@ function getLocalList (key) {
       return []
     }
   }
+    
+   
 }
 
+ function randomColor(){
+        var x= Math.floor(Math.random() * 3)
+        return x
+    }
 
+ 
 
 
 
